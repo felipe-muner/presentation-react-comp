@@ -1,8 +1,36 @@
+import { GetServerSideProps } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 
-export default function Home() {
+type User = {
+  id: number;
+  name: string;
+  username: string;
+  email: string;
+  address: string;
+  phone: string;
+  website: object;
+  company: object;
+};
+
+export default function Home({ data }: { data: User[] }) {
+  const items = data.map((item) => (
+    <div
+      style={{
+        width: "200px",
+        height: "200px",
+        border: "1px solid black",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+      key={item.id.toString()}
+    >
+      {item.name}
+    </div>
+  ));
+
   return (
     <div>
       <Head>
@@ -12,12 +40,26 @@ export default function Home() {
       </Head>
 
       <div>
+        <div className="json-placeholder">
+          {items}
+          {items}
+        </div>
+        {/* <div className="json-placeholder">felipe</div>
+        <div className="json-placeholder">felipe</div> */}
         <div className="main">
           <div className="shadow-in"></div>
           <div className="shadow-two"></div>
           <div className="shadow-three"></div>
         </div>
         <style jsx>{`
+          .json-placeholder {
+            height: 100vh;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+          }
           .main {
             height: 100vh;
             display: flex;
@@ -52,3 +94,15 @@ export default function Home() {
     </div>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const res = await fetch("https://jsonplaceholder.typicode.com/users");
+  const data: User = await res.json();
+  console.log(data);
+
+  return {
+    props: {
+      data,
+    },
+  };
+};
