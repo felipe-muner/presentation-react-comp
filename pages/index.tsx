@@ -17,6 +17,7 @@ type User = {
 export default function Home({ data }: { data: User[] }) {
   const items = data.map((item) => (
     <div
+      className="card"
       style={{
         width: "300px",
         height: "300px",
@@ -61,6 +62,7 @@ export default function Home({ data }: { data: User[] }) {
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
+            margin-top: 50px;
           }
           .main {
             height: 100vh;
