@@ -4,6 +4,7 @@ import Image from "next/image";
 import SkeletonGrid from "../components/SkeletonGrid";
 import styles from "../styles/Home.module.css";
 import { useEffect, useState } from "react";
+import Skeleton from '@material-ui/lab/Skeleton';
 
 type User = {
   id: number;
@@ -56,12 +57,16 @@ export default function Home() {
 
   if (isLoading)
     return (
-      <SkeletonGrid
-        amount={8}
-        width={"300px"}
-        height={"300px"}
-        margin={"15px"}
-      />
+      <>
+        <Skeleton variant="rect" width={210} height={118} />
+
+        <SkeletonGrid
+          amount={8}
+          width={"300px"}
+          height={"300px"}
+          margin={"15px"}
+        />
+      </>
     );
 
   return (
