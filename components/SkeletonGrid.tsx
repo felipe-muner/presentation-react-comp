@@ -1,33 +1,20 @@
 export default function SkeletonGrid({
-  amount,
+  variant,
   width,
   height,
-  margin,
 }: {
-  amount: number;
+  variant: string;
   width: string;
   height: string;
-  margin: string;
+
 }) {
   return (
+
     <div>
-      <div
-        style={{
-          display: "flex",
-          textAlign: "center",
-          justifyContent: "center",
-          alignContent: "center",
-          flexWrap: "wrap",
-          marginTop: "50px",
-        }}
-      >
-        {Array.from(Array(amount).keys()).map((item, i) => (
-          <div key={i.toString()} className="skeleton-div"></div>
-        ))}
-      </div>
+      <div className="skeleton-div"></div>
+      
       <style jsx>{`
         .skeleton-div {
-          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
           background-image: linear-gradient(
             90deg,
             #ddd 25%,
@@ -36,7 +23,6 @@ export default function SkeletonGrid({
           );
           width: ${width};
           height: ${height};
-          margin: ${margin};
           list-style: none;
           background-size: 400% 100%;
           background-position: 100% 50%;

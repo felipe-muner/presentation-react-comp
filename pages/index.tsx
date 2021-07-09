@@ -1,10 +1,8 @@
-import { GetServerSideProps } from "next";
 import Head from "next/head";
-import Image from "next/image";
 import SkeletonGrid from "../components/SkeletonGrid";
-import styles from "../styles/Home.module.css";
 import { useEffect, useState } from "react";
-import Skeleton from '@material-ui/lab/Skeleton';
+// import Skeleton from "@material-ui/lab/Skeleton";
+import Box from "@material-ui/core/Box";
 
 type User = {
   id: number;
@@ -26,7 +24,7 @@ export default function Home() {
     const res = await fetch("https://jsonplaceholder.typicode.com/users");
     const data: User[] = await res.json();
     setUsers(data);
-    setIsLoading(false);
+    // setIsLoading(false);
   };
 
   useEffect(() => {
@@ -42,7 +40,6 @@ export default function Home() {
         boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
         width: "300px",
         height: "300px",
-        border: "1px solid white",
         backgroundColor: "white",
         margin: "15px",
         display: "flex",
@@ -58,14 +55,23 @@ export default function Home() {
   if (isLoading)
     return (
       <>
-        <Skeleton variant="rect" width={210} height={118} />
-
-        <SkeletonGrid
-          amount={8}
-          width={"300px"}
-          height={"300px"}
-          margin={"15px"}
-        />
+        <div
+          style={{
+            boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
+            width: "300px",
+            height: "300px",
+            backgroundColor: "white",
+            margin: "15px",
+            padding: "15px",
+            // display: "flex",
+            // alignItems: "center",
+            // justifyContent: "center",
+          }}
+        >
+          <Box>
+            <SkeletonGrid variant="text" width={"200px"} height={"30px"} />
+          </Box>
+        </div>
       </>
     );
 
