@@ -23,7 +23,7 @@ export default function Home() {
     const res = await fetch("https://jsonplaceholder.typicode.com/users");
     const data: User[] = await res.json();
     setUsers(data);
-    // setIsLoading(false);
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -34,13 +34,13 @@ export default function Home() {
 
   const items = users.map((item) => (
     <div
-      className="card"
       style={{
         boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
         width: "300px",
         height: "300px",
         backgroundColor: "white",
         margin: "15px",
+        padding: "15px",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -52,23 +52,7 @@ export default function Home() {
   ));
 
   if (isLoading)
-    return (
-      <>
-        <div
-          style={{
-            boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
-            width: "300px",
-            height: "300px",
-            backgroundColor: "white",
-            margin: "15px",
-            padding: "15px",
-          }}
-        >
-          <SkeletonGrid variant="rectangle" width={"200px"} height={"30px"} />
-          <SkeletonGrid variant="circle" width={"30px"} height={"30px"} margin={"10px 0px 0px 0px"}/>
-        </div>
-      </>
-    );
+    return <SkeletonGrid />;
 
   return (
     <div>
@@ -83,13 +67,6 @@ export default function Home() {
           {items}
           {items}
         </div>
-        {/* <div className="json-placeholder">felipe</div>
-        <div className="json-placeholder">felipe</div> */}
-        {/* <div className="main">
-          <div className="shadow-in"></div>
-          <div className="shadow-two"></div>
-          <div className="shadow-three"></div>
-        </div> */}
         <style jsx>{`
           .json-placeholder {
             height: 100vh;
@@ -99,13 +76,6 @@ export default function Home() {
             justify-content: center;
             align-items: center;
             margin-top: 50px;
-          }
-          .main {
-            height: 100vh;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
           }
         `}</style>
       </div>

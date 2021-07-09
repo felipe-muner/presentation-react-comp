@@ -1,43 +1,41 @@
-export default function SkeletonGrid({
-  variant,
-  width,
-  height,
-  margin
-}: {
-  variant: "rectangle" | "circle";
-  width: string;
-  height: string;
-  margin: string
-}) {
-  return (
-    <div>
-      <div className="skeleton-div"></div>
-      <style jsx>{`
-        .skeleton-div {
-          background-image: linear-gradient(
-            90deg,
-            #ddd 25%,
-            #eaeaea 37%,
-            #ddd 63%
-          );
-          border-radius: ${variant === "rectangle" ? "15px" : "50%"};
-          width: ${width};
-          height: ${height};
-          margin: ${margin};
-          background-size: 400% 100%;
-          background-position: 100% 50%;
-          animation: skeleton-loading 2s ease infinite;
-        }
+import SkeletonItem from "./SkeletonItem";
 
-        @keyframes skeleton-loading {
-          0% {
-            background-position: 100% 50%;
-          }
-          100% {
-            background-position: 0 50%;
-          }
-        }
-      `}</style>
+export default function SkeletonGrid() {
+  const AMOUNT = 8;
+  return (
+    <div
+      style={{
+        marginTop: "50px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexDirection: "row",
+        flexWrap: "wrap",
+      }}
+    >
+      {Array.from(Array(AMOUNT).keys()).map((el, i) => (
+        <div
+          key={i}
+          style={{
+            boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
+            width: "300px",
+            height: "300px",
+            backgroundColor: "white",
+            margin: "15px",
+            padding: "15px",
+          }}
+        >
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <SkeletonItem variant="circle" width={"50px"} height={"50px"} />
+            <SkeletonItem
+              variant="rectangle"
+              width={"200px"}
+              height={"30px"}
+              margin={"10px 0px 0px 5px"}
+            />
+          </div>
+        </div>
+      ))}
     </div>
   );
 }
