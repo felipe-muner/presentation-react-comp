@@ -18,9 +18,11 @@ export default function Home({ data }: { data: User[] }) {
   const items = data.map((item) => (
     <div
       style={{
-        width: "200px",
-        height: "200px",
-        border: "1px solid black",
+        width: "300px",
+        height: "300px",
+        border: "1px solid white",
+        backgroundColor: "white",
+        margin: "15px",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -46,11 +48,11 @@ export default function Home({ data }: { data: User[] }) {
         </div>
         {/* <div className="json-placeholder">felipe</div>
         <div className="json-placeholder">felipe</div> */}
-        <div className="main">
+        {/* <div className="main">
           <div className="shadow-in"></div>
           <div className="shadow-two"></div>
           <div className="shadow-three"></div>
-        </div>
+        </div> */}
         <style jsx>{`
           .json-placeholder {
             height: 100vh;
