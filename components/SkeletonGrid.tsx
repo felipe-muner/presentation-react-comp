@@ -31,7 +31,7 @@ export default function SkeletonGrid({
           background-image: linear-gradient(
             90deg,
             #ddd 25%,
-            #eee 37%,
+            #eaeaea 37%,
             #ddd 63%
           );
           width: ${width};
@@ -39,7 +39,7 @@ export default function SkeletonGrid({
           margin: ${margin};
           list-style: none;
           background-size: 400% 100%;
-          // background-position: 100% 50%;
+          background-position: 100% 50%;
           animation: skeleton-loading 2s ease infinite;
         }
 
