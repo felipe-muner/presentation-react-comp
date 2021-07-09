@@ -24,7 +24,6 @@ export default function Home() {
   const getUsers = async () => {
     const res = await fetch("https://jsonplaceholder.typicode.com/users");
     const data: User[] = await res.json();
-    console.log("felipe", data);
     setUsers(data);
     setIsLoading(false);
   };
@@ -39,6 +38,7 @@ export default function Home() {
     <div
       className="card"
       style={{
+        boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
         width: "300px",
         height: "300px",
         border: "1px solid white",
@@ -54,7 +54,15 @@ export default function Home() {
     </div>
   ));
 
-  if (isLoading) return <SkeletonGrid />;
+  if (isLoading)
+    return (
+      <SkeletonGrid
+        amount={8}
+        amountInRow={4}
+        width={"300px"}
+        height={"300px"}
+      />
+    );
 
   return (
     <div>
@@ -69,13 +77,13 @@ export default function Home() {
           {items}
           {items}
         </div>
-        <div className="json-placeholder">felipe</div>
-        <div className="json-placeholder">felipe</div>
-        <div className="main">
+        {/* <div className="json-placeholder">felipe</div>
+        <div className="json-placeholder">felipe</div> */}
+        {/* <div className="main">
           <div className="shadow-in"></div>
           <div className="shadow-two"></div>
           <div className="shadow-three"></div>
-        </div>
+        </div> */}
         <style jsx>{`
           .json-placeholder {
             height: 100vh;

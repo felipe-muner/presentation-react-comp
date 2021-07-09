@@ -1,14 +1,4 @@
-export default function SkeletonGrid({
-  amount,
-  amountInRow,
-  width,
-  height,
-}: {
-  amount: number;
-  amountInRow: number;
-  width: string;
-  height: string;
-}) {
+export default function SkeletonTable() {
   return (
     <div>
       <div
@@ -21,10 +11,6 @@ export default function SkeletonGrid({
           marginTop: "50px",
         }}
       >
-        {Array.from(Array(amount).keys()).map((item, i) => (
-          <div key={i.toString()} className="skeleton-div"></div>
-        ))}
-        {/* <div className="skeleton-div"></div>
         <div className="skeleton-div"></div>
         <div className="skeleton-div"></div>
         <div className="skeleton-div"></div>
@@ -33,7 +19,8 @@ export default function SkeletonGrid({
         <div className="skeleton-div"></div>
         <div className="skeleton-div"></div>
         <div className="skeleton-div"></div>
-        <div className="skeleton-div"></div> */}
+        <div className="skeleton-div"></div>
+        <div className="skeleton-div"></div>
       </div>
       <style jsx>{`
         .skeleton-div {
