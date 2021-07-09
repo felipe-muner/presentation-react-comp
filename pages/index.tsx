@@ -58,9 +58,9 @@ export default function Home() {
     return (
       <SkeletonGrid
         amount={8}
-        amountInRow={4}
         width={"300px"}
         height={"300px"}
+        margin={"15px"}
       />
     );
 
