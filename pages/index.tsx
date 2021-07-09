@@ -2,7 +2,6 @@ import Head from "next/head";
 import SkeletonGrid from "../components/SkeletonGrid";
 import { useEffect, useState } from "react";
 // import Skeleton from "@material-ui/lab/Skeleton";
-import Box from "@material-ui/core/Box";
 
 type User = {
   id: number;
@@ -63,14 +62,10 @@ export default function Home() {
             backgroundColor: "white",
             margin: "15px",
             padding: "15px",
-            // display: "flex",
-            // alignItems: "center",
-            // justifyContent: "center",
           }}
         >
-          <Box>
-            <SkeletonGrid variant="text" width={"200px"} height={"30px"} />
-          </Box>
+          <SkeletonGrid variant="rectangle" width={"200px"} height={"30px"} />
+          <SkeletonGrid variant="circle" width={"30px"} height={"30px"} margin={"10px 0px 0px 0px"}/>
         </div>
       </>
     );
@@ -111,28 +106,6 @@ export default function Home() {
             flex-direction: row;
             justify-content: center;
             align-items: center;
-          }
-          .shadow-in {
-            margin-right: 5vh;
-            background-color: #fff;
-            width: 200px;
-            height: 200px;
-            -moz-box-shadow: inset 0 0 10px #000000;
-            -webkit-box-shadow: inset 0 0 10px #000000;
-            box-shadow: inset 0 0 10px #000000;
-          }
-          .shadow-two {
-            margin-right: 5vh;
-            background-color: white;
-            width: 200px;
-            height: 200px;
-            box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
-              rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
-          }
-          .shadow-three {
-            width: 200px;
-            height: 200px;
-            box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
           }
         `}</style>
       </div>

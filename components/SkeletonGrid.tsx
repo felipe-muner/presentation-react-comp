@@ -2,17 +2,16 @@ export default function SkeletonGrid({
   variant,
   width,
   height,
+  margin
 }: {
-  variant: string;
+  variant: "rectangle" | "circle";
   width: string;
   height: string;
-
+  margin: string
 }) {
   return (
-
     <div>
       <div className="skeleton-div"></div>
-      
       <style jsx>{`
         .skeleton-div {
           background-image: linear-gradient(
@@ -21,9 +20,10 @@ export default function SkeletonGrid({
             #eaeaea 37%,
             #ddd 63%
           );
+          border-radius: ${variant === "rectangle" ? "15px" : "50%"};
           width: ${width};
           height: ${height};
-          list-style: none;
+          margin: ${margin};
           background-size: 400% 100%;
           background-position: 100% 50%;
           animation: skeleton-loading 2s ease infinite;
