@@ -1,7 +1,9 @@
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import SkeletonGrid from "../components/SkeletonGrid";
 import styles from "../styles/Home.module.css";
+import { useEffect, useState } from "react";
 
 type User = {
   id: number;
@@ -14,8 +16,26 @@ type User = {
   company: object;
 };
 
-export default function Home({ data }: { data: User[] }) {
-  const items = data.map((item) => (
+// export default function Home({ data }: { data: User[] }) {
+export default function Home() {
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [users, setUsers] = useState<User[]>([]);
+
+  const getUsers = async () => {
+    const res = await fetch("https://jsonplaceholder.typicode.com/users");
+    const data: User[] = await res.json();
+    console.log("felipe", data);
+    setUsers(data);
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
+    setTimeout(() => {
+      getUsers();
+    }, 2000);
+  }, []);
+
+  const items = users.map((item) => (
     <div
       className="card"
       style={{
@@ -34,6 +54,8 @@ export default function Home({ data }: { data: User[] }) {
     </div>
   ));
 
+  if (isLoading) return <SkeletonGrid />;
+
   return (
     <div>
       <Head>
@@ -47,13 +69,13 @@ export default function Home({ data }: { data: User[] }) {
           {items}
           {items}
         </div>
-        {/* <div className="json-placeholder">felipe</div>
-        <div className="json-placeholder">felipe</div> */}
-        {/* <div className="main">
+        <div className="json-placeholder">felipe</div>
+        <div className="json-placeholder">felipe</div>
+        <div className="main">
           <div className="shadow-in"></div>
           <div className="shadow-two"></div>
           <div className="shadow-three"></div>
-        </div> */}
+        </div>
         <style jsx>{`
           .json-placeholder {
             height: 100vh;
@@ -99,14 +121,14 @@ export default function Home({ data }: { data: User[] }) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const res = await fetch("https://jsonplaceholder.typicode.com/users");
-  const data: User = await res.json();
-  console.log(data);
+// export const getServerSideProps: GetServerSideProps = async (context) => {
+//   const res = await fetch("https://jsonplaceholder.typicode.com/users");
+//   const data: User = await res.json();
+//   console.log(data);
 
-  return {
-    props: {
-      data,
-    },
-  };
-};
+//   return {
+//     props: {
+//       data,
+//     },
+//   };
+// };
