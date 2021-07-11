@@ -40,6 +40,13 @@ export default function Home() {
       <div key={item.id.toString()}>
         <div className={styles.card}>
           <div className={styles.row}>
+            <div
+              style={{ marginLeft: "11px", marginTop: "7px", fontSize: "14px" }}
+            >
+              {newDate.toUTCString()}
+            </div>
+          </div>
+          <div className={styles.row} style={{ marginTop: "10px" }}>
             <div className={styles.circleName}>
               <span className={styles.shortName}>
                 {getShortName(item.name)}
