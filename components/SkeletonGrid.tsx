@@ -34,6 +34,21 @@ export default function SkeletonGrid() {
               margin={"10px 0px 0px 5px"}
             />
           </div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              marginTop: "10px;",
+            }}
+          >
+            <SkeletonItem variant="circle" width={"50px"} height={"50px"} />
+            <SkeletonItem
+              variant="rectangle"
+              width={"200px"}
+              height={"30px"}
+              margin={"10px 0px 0px 5px"}
+            />
+          </div>
         </div>
       ))}
     </div>

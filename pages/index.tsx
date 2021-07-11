@@ -1,7 +1,7 @@
 import Head from "next/head";
 import SkeletonGrid from "../components/SkeletonGrid";
 import { useEffect, useState } from "react";
-// import Skeleton from "@material-ui/lab/Skeleton";
+import { getShortName } from "../utils";
 
 type User = {
   id: number;
@@ -22,37 +22,70 @@ export default function Home() {
   const getUsers = async () => {
     const res = await fetch("https://jsonplaceholder.typicode.com/users");
     const data: User[] = await res.json();
+    console.log(data);
     setUsers(data);
     setIsLoading(false);
   };
 
   useEffect(() => {
-    setTimeout(() => {
-      getUsers();
-    }, 2000);
+    // setTimeout(() => {
+    getUsers();
+    // }, 2000);
   }, []);
 
   const items = users.map((item) => (
-    <div
-      style={{
-        boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
-        width: "300px",
-        height: "300px",
-        backgroundColor: "white",
-        margin: "15px",
-        padding: "15px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-      key={item.id.toString()}
-    >
-      {item.name}
+    <div key={item.id.toString()}>
+      <div
+        style={{
+          boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
+          width: "300px",
+          height: "300px",
+          backgroundColor: "white",
+          margin: "15px",
+          padding: "22px",
+          display: "flex",
+          alignItems: "flex-start",
+        }}
+      >
+        <div
+          style={{
+            color: "white",
+            height: "40px",
+            width: "40px",
+            backgroundColor: "#d9dce1",
+            borderRadius: "50%",
+            border: "none",
+            textAlign: "center",
+            lineHeight: "40px",
+            marginRight: "8px",
+          }}
+        >
+          <span
+            style={{
+              fontStyle: "normal",
+              fontWeight: 500,
+              fontSize: "18px",
+              lineHeight: "40px",
+              textAlign: "right",
+              color: "#949ea8",
+            }}
+          >
+            {getShortName(item.name)}
+          </span>
+        </div>
+        <div
+          style={{
+            marginTop: "7px",
+            fontSize: "18px"
+          }}
+        >
+          {item.name}
+        </div>
+      </div>
     </div>
   ));
 
-  if (isLoading)
-    return <SkeletonGrid />;
+  if (isLoading) return <SkeletonGrid />;
 
   return (
     <div>
