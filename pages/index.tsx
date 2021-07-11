@@ -2,7 +2,7 @@ import Head from "next/head";
 import SkeletonGrid from "../components/SkeletonGrid";
 import { useEffect, useState } from "react";
 import { getShortName, randomDate } from "../utils";
-
+import styles from "../styles/Home.module.css";
 type User = {
   id: number;
   name: string;
@@ -38,40 +38,10 @@ export default function Home() {
     console.log(newDate);
     return (
       <div key={item.id.toString()}>
-        <div
-          style={{
-            boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
-            width: "300px",
-            height: "300px",
-            backgroundColor: "white",
-            margin: "15px",
-            padding: "22px",
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "flex-start" }}>
-            <div
-              style={{
-                color: "white",
-                height: "40px",
-                width: "40px",
-                backgroundColor: "#d9dce1",
-                borderRadius: "50%",
-                border: "none",
-                textAlign: "center",
-                lineHeight: "40px",
-                marginRight: "8px",
-              }}
-            >
-              <span
-                style={{
-                  fontStyle: "normal",
-                  fontWeight: 500,
-                  fontSize: "18px",
-                  lineHeight: "40px",
-                  textAlign: "right",
-                  color: "#949ea8",
-                }}
-              >
+        <div className={styles.card}>
+          <div className={styles.row}>
+            <div className={styles.circleName}>
+              <span className={styles.shortName}>
                 {getShortName(item.name)}
               </span>
             </div>
@@ -84,23 +54,9 @@ export default function Home() {
               {item.name}
             </div>
           </div>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "flex-start",
-              marginTop: "15px",
-            }}
-          >
+          <div className={styles.row} style={{ marginTop: "10px" }}>
             <div>
-              <i
-                style={{
-                  color: "rgb(159 160 162)",
-                  textShadow: "1px 1px 1px #ccc",
-                  fontSize: "2em",
-                  marginLeft: "5px",
-                }}
-                className="fas fa-envelope"
-              ></i>
+              <i className={`fas fa-envelope ${styles.emailIcon}`}></i>
             </div>
             <div
               style={{ marginLeft: "11px", marginTop: "7px", fontSize: "14px" }}
@@ -124,21 +80,10 @@ export default function Home() {
       </Head>
 
       <div>
-        <div className="json-placeholder">
+        <div className={styles.main}>
           {items}
           {items}
         </div>
-        <style jsx>{`
-          .json-placeholder {
-            height: 100vh;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            margin-top: 50px;
-          }
-        `}</style>
       </div>
     </div>
   );

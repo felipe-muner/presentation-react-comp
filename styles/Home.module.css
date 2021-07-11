@@ -5,15 +5,55 @@
   }
 } */
 
-/* .card {
+/* /* boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px", */
+.main {
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.card {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   width: 300px;
   height: 300px;
   border: 1px solid white;
   background-color: white;
   margin: 15px;
+  padding: 22px;
+}
+.row {
   display: flex;
-  align-items: center;
-  justify-content: center;
-} */
+  align-items: flex-start;
+}
 
+.shortName {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 40px;
+  text-align: right;
+  color: #949ea8;
+}
 
+.circleName {
+  color: white;
+  height: 40px;
+  width: 40px;
+  background-color: #d9dce1;
+  border-radius: 50%;
+  border: none;
+  text-align: center;
+  line-height: 40px;
+  margin-right: 8px;
+}
+
+.emailIcon {
+  color: rgb(159 160 162);
+  text-shadow: 1px 1px 1px #ccc;
+  font-size: 2em;
+  margin-left: 5px;
+}
