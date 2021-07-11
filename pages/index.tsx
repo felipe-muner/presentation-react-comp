@@ -1,7 +1,7 @@
 import Head from "next/head";
 import SkeletonGrid from "../components/SkeletonGrid";
 import { useEffect, useState } from "react";
-import { getShortName } from "../utils";
+import { getShortName, randomDate } from "../utils";
 
 type User = {
   id: number;
@@ -43,43 +43,63 @@ export default function Home() {
           backgroundColor: "white",
           margin: "15px",
           padding: "22px",
-          display: "flex",
-          alignItems: "flex-start",
         }}
       >
-        <div
-          style={{
-            color: "white",
-            height: "40px",
-            width: "40px",
-            backgroundColor: "#d9dce1",
-            borderRadius: "50%",
-            border: "none",
-            textAlign: "center",
-            lineHeight: "40px",
-            marginRight: "8px",
-          }}
-        >
-          <span
+        <div style={{ display: "flex", alignItems: "flex-start" }}>
+          <div
             style={{
-              fontStyle: "normal",
-              fontWeight: 500,
-              fontSize: "18px",
+              color: "white",
+              height: "40px",
+              width: "40px",
+              backgroundColor: "#d9dce1",
+              borderRadius: "50%",
+              border: "none",
+              textAlign: "center",
               lineHeight: "40px",
-              textAlign: "right",
-              color: "#949ea8",
+              marginRight: "8px",
             }}
           >
-            {getShortName(item.name)}
-          </span>
+            <span
+              style={{
+                fontStyle: "normal",
+                fontWeight: 500,
+                fontSize: "18px",
+                lineHeight: "40px",
+                textAlign: "right",
+                color: "#949ea8",
+              }}
+            >
+              {getShortName(item.name)}
+            </span>
+          </div>
+          <div
+            style={{
+              marginTop: "9px",
+              fontSize: "18px",
+            }}
+          >
+            {item.name}
+          </div>
         </div>
         <div
           style={{
-            marginTop: "7px",
-            fontSize: "18px"
+            display: "flex",
+            alignItems: "flex-start",
+            marginTop: "15px",
           }}
         >
-          {item.name}
+          <div>
+            <i
+              style={{
+                color: "rgb(159 160 162)",
+                textShadow: "1px 1px 1px #ccc",
+                fontSize: "2em",
+                marginLeft: "5px",
+              }}
+              className="fas fa-envelope"
+            ></i>
+          </div>
+          <div style={{marginLeft:"11px", marginTop:"7px", fontSize:"14px"}}>{item.email}</div>
         </div>
       </div>
     </div>
