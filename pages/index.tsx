@@ -33,77 +33,85 @@ export default function Home() {
     // }, 2000);
   }, []);
 
-  const items = users.map((item) => (
-    <div key={item.id.toString()}>
-      <div
-        style={{
-          boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
-          width: "300px",
-          height: "300px",
-          backgroundColor: "white",
-          margin: "15px",
-          padding: "22px",
-        }}
-      >
-        <div style={{ display: "flex", alignItems: "flex-start" }}>
-          <div
-            style={{
-              color: "white",
-              height: "40px",
-              width: "40px",
-              backgroundColor: "#d9dce1",
-              borderRadius: "50%",
-              border: "none",
-              textAlign: "center",
-              lineHeight: "40px",
-              marginRight: "8px",
-            }}
-          >
-            <span
-              style={{
-                fontStyle: "normal",
-                fontWeight: 500,
-                fontSize: "18px",
-                lineHeight: "40px",
-                textAlign: "right",
-                color: "#949ea8",
-              }}
-            >
-              {getShortName(item.name)}
-            </span>
-          </div>
-          <div
-            style={{
-              marginTop: "9px",
-              fontSize: "18px",
-            }}
-          >
-            {item.name}
-          </div>
-        </div>
+  const items = users.map((item) => {
+    const newDate = randomDate(new Date(2021, 5, 5), new Date());
+    console.log(newDate);
+    return (
+      <div key={item.id.toString()}>
         <div
           style={{
-            display: "flex",
-            alignItems: "flex-start",
-            marginTop: "15px",
+            boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
+            width: "300px",
+            height: "300px",
+            backgroundColor: "white",
+            margin: "15px",
+            padding: "22px",
           }}
         >
-          <div>
-            <i
+          <div style={{ display: "flex", alignItems: "flex-start" }}>
+            <div
               style={{
-                color: "rgb(159 160 162)",
-                textShadow: "1px 1px 1px #ccc",
-                fontSize: "2em",
-                marginLeft: "5px",
+                color: "white",
+                height: "40px",
+                width: "40px",
+                backgroundColor: "#d9dce1",
+                borderRadius: "50%",
+                border: "none",
+                textAlign: "center",
+                lineHeight: "40px",
+                marginRight: "8px",
               }}
-              className="fas fa-envelope"
-            ></i>
+            >
+              <span
+                style={{
+                  fontStyle: "normal",
+                  fontWeight: 500,
+                  fontSize: "18px",
+                  lineHeight: "40px",
+                  textAlign: "right",
+                  color: "#949ea8",
+                }}
+              >
+                {getShortName(item.name)}
+              </span>
+            </div>
+            <div
+              style={{
+                marginTop: "9px",
+                fontSize: "18px",
+              }}
+            >
+              {item.name}
+            </div>
           </div>
-          <div style={{marginLeft:"11px", marginTop:"7px", fontSize:"14px"}}>{item.email}</div>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "flex-start",
+              marginTop: "15px",
+            }}
+          >
+            <div>
+              <i
+                style={{
+                  color: "rgb(159 160 162)",
+                  textShadow: "1px 1px 1px #ccc",
+                  fontSize: "2em",
+                  marginLeft: "5px",
+                }}
+                className="fas fa-envelope"
+              ></i>
+            </div>
+            <div
+              style={{ marginLeft: "11px", marginTop: "7px", fontSize: "14px" }}
+            >
+              {item.email}
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  ));
+    );
+  });
 
   if (isLoading) return <SkeletonGrid />;
 
